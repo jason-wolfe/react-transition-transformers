@@ -20708,10 +20708,6 @@ var App = React.createClass({displayName: 'App',
 React.renderComponent(App(null), document.getElementById('transition'));
 
 },{"../":169,"react":167}],169:[function(require,module,exports){
-// Components
-var EaseFocused = require('./src/EaseFocused');
-var easedToggle = require('./src/easedToggle');
-
 // Easing functions
 var easing = require('./src/easing');
 
@@ -20720,9 +20716,11 @@ var inertial = require('./src/inertial');
 var interpolation = require('./src/interpolation');
 var transition = require('./src/transition');
 var interpolate = require('./src/interpolate');
+var easeFocused = require('./src/easeFocused');
+var easedToggle = require('./src/easedToggle');
 
 module.exports = {
-  EaseFocused: EaseFocused,
+  easeFocused: easeFocused,
   easedToggle: easedToggle,
   interpolate: interpolate,
   easing: easing,
@@ -20731,7 +20729,7 @@ module.exports = {
   transition: transition
 }
 
-},{"./src/EaseFocused":314,"./src/easedToggle":315,"./src/easing":316,"./src/inertial":317,"./src/interpolate":318,"./src/interpolation":319,"./src/transition":321}],170:[function(require,module,exports){
+},{"./src/easeFocused":314,"./src/easedToggle":315,"./src/easing":316,"./src/inertial":317,"./src/interpolate":318,"./src/interpolation":319,"./src/transition":321}],170:[function(require,module,exports){
 module.exports=require(9)
 },{"./focusNode":275}],171:[function(require,module,exports){
 module.exports=require(10)
@@ -21023,6 +21021,8 @@ module.exports=require(167)
 /** @jsx React.DOM */
 
 var React = require('react');
+
+var transformerUtil = require('./transformerUtil');
 var easedToggle = require('./easedToggle');
 
 var EaseFocused = React.createClass({displayName: 'EaseFocused',
@@ -21054,17 +21054,16 @@ var EaseFocused = React.createClass({displayName: 'EaseFocused',
 
 function easeFocused(component, spec, duration, start, end) {
   return function(props, children) {
-    if ('_easeFocusedProps' in props) {
-      console.warn('key "' + '_easeFocusedProps' + '" (=' + props._easeFocusedProps + ') present in easeFocused call will be ignored and not passed to ' + component.displayName);
-    }
+    transformerUtil.warnKey(props, '_easeFocusedProps', 'easeeFocused call', component.displayName);
     var newProps = {_easeFocusedProps: {component:component, spec:spec, duration:duration, easeFn: opts && opts.easeFn, fps: opts && opts.fps}, props: props};
+    transformerUtil.addKeyIfPresent(newProps, props);
     return EaseFocused(newProps, children);
   };
 }
 
 module.exports = easeFocused;
 
-},{"./easedToggle":315,"react":313}],315:[function(require,module,exports){
+},{"./easedToggle":315,"./transformerUtil":320,"react":313}],315:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
@@ -21296,6 +21295,7 @@ module.exports = easing;
 var React = require('react');
 var merge = require('react/lib/merge');
 
+var transformerUtil = require('./transformerUtil');
 var interpolation = require('./interpolation');
 var easing = require('./easing');
 
@@ -21349,21 +21349,21 @@ var Inertia = React.createClass({displayName: 'Inertia',
 
 var inertial = function(component, spec, duration, opts) {
   return function(props, children) {
-    if ('_inertialProps' in props) {
-      console.warn('key "' + '_inertialProps' + '" (=' + props._inertialProps + ') present in inertial call will be ignored and not passed to ' + component.displayName);
-    }
+    transformerUtil.warnKey(props, '_inertialProps', 'inertial call', component.displayName);
     var newProps = merge({_inertialProps: {component:component, spec:spec, duration:duration, easeFn: opts && opts.easeFn, fps: opts && opts.fps}, children: children}, props);
+    transformerUtil.addKeyIfPresent(newProps, props);
     return Inertia(newProps, children);
   };
 }
 
 module.exports = inertial;
 
-},{"./easing":316,"./interpolation":319,"react":313,"react/lib/merge":299}],318:[function(require,module,exports){
+},{"./easing":316,"./interpolation":319,"./transformerUtil":320,"react":313,"react/lib/merge":299}],318:[function(require,module,exports){
 /** @jsx React.DOM */
 
 var React = require('react');
 var merge = require('react/lib/merge');
+
 var interpolation = require('./interpolation');
 var easing = require('./easing');
 var transformerUtil = require('./transformerUtil');
@@ -21489,8 +21489,9 @@ module.exports = {
 /** @jsx React.DOM */
 
 var React = require('react');
-var interpolate = require('./interpolate');
+
 var transformerUtil = require('./transformerUtil')
+var interpolate = require('./interpolate');
 
 var Transition = React.createClass({displayName: 'Transition',
   componentDidMount: function() {
@@ -21527,9 +21528,7 @@ var Transition = React.createClass({displayName: 'Transition',
 
 var transition = function(component, spec, duration, start, end, opts) {
   return function(props, children) {
-    if (props && '_transitionProps' in props) {
-      console.warn('key "' + '_transitionProps' + '" (=' + props._transitionProps + ') present in inertial call will be ignored and not passed to ' + component.displayName);
-    }
+    transformerUtil.warnKey(props, '_transitionProps', 'transition call', component.displayName);
     var newProps = {_transitionProps: {component:component, spec:spec, duration:duration, start:start, end:end, easeFn: opts && opts.easeFn, fps: opts && opts.fps}, props: props};
     transformerUtil.addKeyIfPresent(newProps, props);
     return Transition(newProps, children);

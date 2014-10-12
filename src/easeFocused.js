@@ -1,6 +1,8 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+
+var transformerUtil = require('./transformerUtil');
 var easedToggle = require('./easedToggle');
 
 var EaseFocused = React.createClass({
@@ -32,10 +34,9 @@ var EaseFocused = React.createClass({
 
 function easeFocused(component, spec, duration, start, end) {
   return function(props, children) {
-    if ('_easeFocusedProps' in props) {
-      console.warn('key "' + '_easeFocusedProps' + '" (=' + props._easeFocusedProps + ') present in easeFocused call will be ignored and not passed to ' + component.displayName);
-    }
+    transformerUtil.warnKey(props, '_easeFocusedProps', 'easeeFocused call', component.displayName);
     var newProps = {_easeFocusedProps: {component:component, spec:spec, duration:duration, easeFn: opts && opts.easeFn, fps: opts && opts.fps}, props: props};
+    transformerUtil.addKeyIfPresent(newProps, props);
     return EaseFocused(newProps, children);
   };
 }

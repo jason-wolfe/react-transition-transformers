@@ -1,8 +1,9 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var interpolate = require('./interpolate');
+
 var transformerUtil = require('./transformerUtil')
+var interpolate = require('./interpolate');
 
 var Transition = React.createClass({
   componentDidMount: function() {
@@ -39,9 +40,7 @@ var Transition = React.createClass({
 
 var transition = function(component, spec, duration, start, end, opts) {
   return function(props, children) {
-    if (props && '_transitionProps' in props) {
-      console.warn('key "' + '_transitionProps' + '" (=' + props._transitionProps + ') present in inertial call will be ignored and not passed to ' + component.displayName);
-    }
+    transformerUtil.warnKey(props, '_transitionProps', 'transition call', component.displayName);
     var newProps = {_transitionProps: {component:component, spec:spec, duration:duration, start:start, end:end, easeFn: opts && opts.easeFn, fps: opts && opts.fps}, props: props};
     transformerUtil.addKeyIfPresent(newProps, props);
     return Transition(newProps, children);

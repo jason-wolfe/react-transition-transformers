@@ -1,7 +1,3 @@
-// Components
-var EaseFocused = require('./src/EaseFocused');
-var easedToggle = require('./src/easedToggle');
-
 // Easing functions
 var easing = require('./src/easing');
 
@@ -10,9 +6,11 @@ var inertial = require('./src/inertial');
 var interpolation = require('./src/interpolation');
 var transition = require('./src/transition');
 var interpolate = require('./src/interpolate');
+var easeFocused = require('./src/easeFocused');
+var easedToggle = require('./src/easedToggle');
 
 module.exports = {
-  EaseFocused: EaseFocused,
+  easeFocused: easeFocused,
   easedToggle: easedToggle,
   interpolate: interpolate,
   easing: easing,

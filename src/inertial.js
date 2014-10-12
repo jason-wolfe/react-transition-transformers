@@ -3,6 +3,7 @@
 var React = require('react');
 var merge = require('react/lib/merge');
 
+var transformerUtil = require('./transformerUtil');
 var interpolation = require('./interpolation');
 var easing = require('./easing');
 
@@ -56,10 +57,9 @@ var Inertia = React.createClass({
 
 var inertial = function(component, spec, duration, opts) {
   return function(props, children) {
-    if ('_inertialProps' in props) {
-      console.warn('key "' + '_inertialProps' + '" (=' + props._inertialProps + ') present in inertial call will be ignored and not passed to ' + component.displayName);
-    }
+    transformerUtil.warnKey(props, '_inertialProps', 'inertial call', component.displayName);
     var newProps = merge({_inertialProps: {component:component, spec:spec, duration:duration, easeFn: opts && opts.easeFn, fps: opts && opts.fps}, children: children}, props);
+    transformerUtil.addKeyIfPresent(newProps, props);
     return Inertia(newProps, children);
   };
 }

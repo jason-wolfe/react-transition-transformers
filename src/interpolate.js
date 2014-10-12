@@ -2,6 +2,7 @@
 
 var React = require('react');
 var merge = require('react/lib/merge');
+
 var interpolation = require('./interpolation');
 var easing = require('./easing');
 var transformerUtil = require('./transformerUtil');
