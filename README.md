@@ -43,4 +43,12 @@ var App = React.createClass({
 
 This yields a component displaying a value that can be transitioned between the values 0 and 100 by clicking the on or off buttons. When going up or down, 1 full second will elapse between when the button is clicked and when it reaches its destination value. An important caveat resulting from this is that it suffers from the ickiness of non-additive animations: if the value starts at 0, and you click 'On' and then immediately click 'Off', it will spend a full second transitioning from however far it had gotten back down to zero. This can be fixed by either providing a constant slope or by using a special purpose transformer when this behavior is not desired.
 
-Another example in the [examples/](examples/) folder demonstrates making a pie chart that does not know how to animate itself animated, simply by using a transformer to animate the data.
+Another example ([Live Demo](https://rawgit.com/jason-wolfe/react-transition-transformers/master/examples/index.html)) in the [examples/](examples/) folder demonstrates making a pie chart that does not know how to animate itself animated, simply by using a transformer to animate the data. The key part is this:
+
+```js
+  var InertialPieChart = transformers.inertial(PieChart, {data:[{value:'number'}]}, 750, {easeFn: transformers.easing.easeOutElastic});
+
+  [...]
+
+  <InertialPieChart data={data}/>
+```
