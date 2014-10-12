@@ -1,5 +1,7 @@
 # [React](http://facebook.github.io/react) Transition Transformers
 
+([Live Demo](https://rawgit.com/jason-wolfe/react-transition-transformers/master/examples/index.html))
+
 ## General
 
 This is a very experimental package which provides component transformers that take a component and some other properties and yield a new component with transformed behavior.
