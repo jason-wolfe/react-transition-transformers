@@ -4,7 +4,7 @@
   "description": "Component transformers for smooth transitions",
   "main": "index.html",
   "scripts": {
-    "build": "node_modules/.bin/browserify -t reactify example.js > example-bundle.js"
+    "build": "node_modules/.bin/browserify -t reactify examples.js > example-bundle.js"
   },
   "author": "Jason Wolfe <jasonwolfe@utexas.edu>",
   "license": "MIT",
