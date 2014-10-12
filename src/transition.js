@@ -37,7 +37,7 @@ var transition = function(component, spec, duration, start, end, opts) {
     if (props && '_transitionProps' in props) {
       console.warn('key "' + '_transitionProps' + '" (=' + props._transitionProps + ') present in inertial call will be ignored and not passed to ' + component.displayName);
     }
-    var newProps = extend({_transitionProps: {component:component, spec:spec, duration:duration, start:start, end:end, easeFn: opts.easeFn, fps: opts.fps}}, {props: props}, props && 'key' in props ? {key:props.key} : {});
+    var newProps = extend({_transitionProps: {component:component, spec:spec, duration:duration, start:start, end:end, easeFn: opts && opts.easeFn, fps: opts && opts.fps}}, {props: props}, props && 'key' in props ? {key:props.key} : {});
     return Transition(newProps, children);
   };
 }
