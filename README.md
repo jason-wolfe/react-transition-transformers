@@ -50,5 +50,11 @@ Another example ([Live Demo](https://rawgit.com/jason-wolfe/react-transition-tra
 
   [...]
 
-  <InertialPieChart data={data}/>
+  return (
+    <div>
+      [...]
+      <InertialPieChart data={data}/>
+      [...]
+    </div>
+  );
 ```
