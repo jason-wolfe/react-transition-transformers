@@ -9,7 +9,7 @@ This is a very experimental package which provides component transformers that t
 Example usage:
 
 ```js
-var transformers = require('react-transition-transformers');
+var transformers = require('react-transition-transformers'); // Note: this isn't actually published on npm as I have no idea what I'm doing on that front.
 var React = require('react');
 
 var PrintX = React.createClass({
@@ -58,3 +58,5 @@ Another example ([Live Demo](https://rawgit.com/jason-wolfe/react-transition-tra
     </div>
   );
 ```
+
+Everything is pretty unstable and in a state of flux. The `inertial` transformer is the most mature of them all.
