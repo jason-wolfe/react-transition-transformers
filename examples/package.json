@@ -4,13 +4,15 @@
   "description": "Component transformers for smooth transitions",
   "main": "index.html",
   "scripts": {
-    "build": "node_modules/.bin/browserify -t reactify examples.js > example-bundle.js"
+    "build": "node_modules/.bin/browserify -t reactify examples.js > example-bundle.js",
+    "start": "node_modules/.bin/watchify -t reactify examples.js -o example-bundle.js"
   },
   "author": "Jason Wolfe <jasonwolfe@utexas.edu>",
   "license": "MIT",
   "devDependencies": {
     "browserify": "^4.2.0",
-    "reactify": "^0.13.1"
+    "reactify": "^0.13.1",
+    "watchify": "~0.10.2"
   },
   "dependencies": {
     "react": "~0.11.2"

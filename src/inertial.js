@@ -59,7 +59,7 @@ var inertial = function(component, spec, duration, opts) {
     if ('_inertialProps' in props) {
       console.warn('key "' + '_inertialProps' + '" (=' + props._inertialProps + ') present in inertial call will be ignored and not passed to ' + component.displayName);
     }
-    var newProps = merge({_inertialProps: {component:component, spec:spec, duration:duration, easeFn: opts && opts.easeFn, fps: opts && opts.fps}}, props);
+    var newProps = merge({_inertialProps: {component:component, spec:spec, duration:duration, easeFn: opts && opts.easeFn, fps: opts && opts.fps}, children: children}, props);
     return Inertia(newProps, children);
   };
 }
