@@ -11,6 +11,8 @@ This is a very experimental package which provides component transformers that t
 Example usage:
 
 ```js
+/** @jsx React.DOM */
+
 var transformers = require('react-transition-transformers'); // Note: this isn't actually published on npm as I have no idea what I'm doing on that front.
 var React = require('react');
 
