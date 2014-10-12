@@ -62,3 +62,9 @@ Another example ([Live Demo](https://rawgit.com/jason-wolfe/react-transition-tra
 ```
 
 Everything is pretty unstable and in a state of flux. The `inertial` transformer is the most mature of them all.
+
+## Similar work
+
+It looks like [@pirelenito](https://github.com/pirelenito) and I independently converged on similar component implementations (see: [react-transition](https://github.com/pirelenito/react-transition)). The main improvement here as far as I can tell is making a more developer-friendly API.
+
+[@chenglou](https://github.com/chenglou) approaches things from a different angle, encapsulating the animation state in a mixin and giving more verbose but finer-grained control (see: [react-tween-state](https://github.com/chenglou/react-tween-state));
