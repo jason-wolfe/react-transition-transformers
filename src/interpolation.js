@@ -13,12 +13,13 @@ function interpolate(fn, spec, prev, current, fraction) {
         return interpolated;
     } else if (typeof spec == "object") {
         var result = Object.create(current);
-        for (var k in spec) {
-            if (!spec.hasOwnProperty(k)) {
-                continue;
+        for (var k in current) {
+            if (spec.hasOwnProperty(k)) {
+              var specElem = spec[k];
+              result[k] = interpolate(fn, spec[k], prev[k], current[k], fraction);
+            } else {
+              result[k] = current[k];
             }
-            var specElem = spec[k];
-            result[k] = interpolate(fn, spec[k], prev[k], current[k], fraction);
         }
         return result;
     } else {
@@ -45,14 +46,13 @@ function anyChanged(spec, prev, current) {
     return false;
   } else if (typeof spec == "object") {
     var result = Object.create(current);
-    for (var k in spec) {
-      if (!spec.hasOwnProperty(k)) {
-        continue;
-      }
-      var specElem = spec[k];
-      if (anyChanged(specElem, prev[k], current[k])) {
-        return true;
-      }
+    for (var k in current) {
+        if (spec.hasOwnProperty(k)) {
+          var specElem = spec[k];
+          if (anyChanged(specElem, prev[k], current[k])) {
+            return true;
+          }
+        }
     }
     return false;
   } else {

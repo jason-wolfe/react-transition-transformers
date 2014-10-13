@@ -4,4 +4,4 @@ require('./buttons');
 require('./buttons2');
 require('./transition');
 require('./interpolate');
-
+require('./click');
