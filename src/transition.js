@@ -32,7 +32,7 @@ var Transition = React.createClass({
   render: function() {
     var p = this.props._transitionProps;
     var Interpolated = interpolate(p.component, p.spec, p.start, p.end);
-    var props = Object.create(this.props.props);
+    var props = Object.create(this.props.props || {});
     props.fraction = this.state.fraction;
     return Interpolated(props, this.props.children);
   }

@@ -14,8 +14,7 @@ var Interpolate = React.createClass({
     return fn(fraction, start, change, 1.0);
   },
   render: function() {
-    var props = merge(this.props.props);
-    delete props._interpolateProps;
+    var props = Object.create(this.props.props || {});
     var p = this.props._interpolateProps;
     var other = interpolation.interpolate(this.interpolate, p.spec, p.start, p.end, props.fraction);
     for (var k in other) {

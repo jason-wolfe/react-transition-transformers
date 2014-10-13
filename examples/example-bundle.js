@@ -20699,7 +20699,7 @@ var App = React.createClass({displayName: 'App',
     var SmoothPrintX = transformers.transition(PrintX, {x:'number'}, 1000, {x:0}, {x:100});
     return (
       React.DOM.div(null, 
-        SmoothPrintX({f: "fake"})
+        SmoothPrintX(null)
       )
     );
   }
@@ -21375,8 +21375,7 @@ var Interpolate = React.createClass({displayName: 'Interpolate',
     return fn(fraction, start, change, 1.0);
   },
   render: function() {
-    var props = merge(this.props.props);
-    delete props._interpolateProps;
+    var props = Object.create(this.props.props || {});
     var p = this.props._interpolateProps;
     var other = interpolation.interpolate(this.interpolate, p.spec, p.start, p.end, props.fraction);
     for (var k in other) {
@@ -21520,7 +21519,7 @@ var Transition = React.createClass({displayName: 'Transition',
   render: function() {
     var p = this.props._transitionProps;
     var Interpolated = interpolate(p.component, p.spec, p.start, p.end);
-    var props = Object.create(this.props.props);
+    var props = Object.create(this.props.props || {});
     props.fraction = this.state.fraction;
     return Interpolated(props, this.props.children);
   }

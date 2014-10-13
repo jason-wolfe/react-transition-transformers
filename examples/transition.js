@@ -14,7 +14,7 @@ var App = React.createClass({
     var SmoothPrintX = transformers.transition(PrintX, {x:'number'}, 1000, {x:0}, {x:100});
     return (
       <div>
-        <SmoothPrintX f='fake'/>
+        <SmoothPrintX/>
       </div>
     );
   }
