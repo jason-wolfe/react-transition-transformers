@@ -40,11 +40,6 @@ var Demo = React.createClass({
             <InertialPieChart data={data}/>
           </g>
         </svg>
-        <svg height="250" width="250">
-          <g transform="scale(245)">
-            <PieChart data={data}/>
-          </g>
-        </svg>
         <button onClick={this.uniformizeData}>Uniformize</button>
         <button onClick={this.randomizeData}>Randomize</button>
       </div>

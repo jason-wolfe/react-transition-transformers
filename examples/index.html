@@ -2,18 +2,29 @@
   <head>
   </head>
   <body>
+    <h1>Animated Pie Chart (<a href="https://github.com/jason-wolfe/react-transition-transformers/blob/master/examples/example.js">source</a>)</h1>
+    <div>
+      The PieChart component is NOT animated, and does not know how to animate itself. Instead, the data being passed in to it is being automatically animated when it changes, by wrapping the PieChart component with the "inertial" transformer.
+    </div>
+    <br/>
+    <div id="ex1"></div>
+
+    <h1>Click anywhere (<a href="https://github.com/jason-wolfe/react-transition-transformers/blob/master/examples/click.js">source</a>)</h1>
+    <div>
+      Here, two spans are created and passed in "top" and "left" attributes to move them. However, one of the spans is wrapped in an "inertial" call that causes its top and left attributes to be animated when changed.
+    <div>
+    <br/>
+    <div id="click"></div>
+
+    <h1>Simple on-off transitions(<a href="https://github.com/jason-wolfe/react-transition-transformers/blob/master/examples/buttons2.js">source</a>)</h1>
+    <div id="buttons2"></div>
+
     <h1>Static interpolation (<a href="https://github.com/jason-wolfe/react-transition-transformers/blob/master/examples/interpolate.js">source</a>)</h1>
     <div id="interpolate"></div>
+
     <h1>Simple on-mount transition (<a href="https://github.com/jason-wolfe/react-transition-transformers/blob/master/examples/transition.js">source</a>)</h1>
     <div id="transition"></div>
-    <h1>Simple on-off transitions (<a href="https://github.com/jason-wolfe/react-transition-transformers/blob/master/examples/buttons.js">source</a>)</h1>
-    <div id="buttons"></div>
-    <h1>Simple on-off transitions with constant slope (<a href="https://github.com/jason-wolfe/react-transition-transformers/blob/master/examples/buttons2.js">source</a>)</h1>
-    <div id="buttons2"></div>
-    <h1>Animated Pie Chart (non-animated for comparison) (<a href="https://github.com/jason-wolfe/react-transition-transformers/blob/master/examples/example.js">source</a>)</h1>
-    <div id="ex1"></div>
-    <h1>Click anywhere (<a href="https://github.com/jason-wolfe/react-transition-transformers/blob/master/examples/click.js">source</a>)</h1>
-    <div id="click"></div>
+
     <script src="example-bundle.js"></script>
   </body>
 </html>
