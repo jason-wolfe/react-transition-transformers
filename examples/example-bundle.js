@@ -21100,8 +21100,7 @@ var EasedToggle = React.createClass({displayName: 'EasedToggle',
     var Interpolator = interpolate(p.component, p.spec, p.start, p.end);
     var TransitioningInterpolator = transition(Interpolator, {fraction:'number'}, duration, {fraction:startFraction}, {fraction: endFraction});
     var props = Object.create(this.props.props);
-    props.key = 'wtf' + this.state.generation;
-    console.log(this.state.generation);
+    props.key = this.state.generation;
     return TransitioningInterpolator(props, this.props.children);
   },
 });
